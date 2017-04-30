@@ -24,3 +24,9 @@ function clientsCreate(req, res){
     });
   });
 }
+
+
+// name: { type: String, unique: true, required: true },
+// email: { type: String, unique: true, required: true },
+// accountingProvider: {type: String, enum: ['Xero', 'Crunch', 'Free Agent'], required: true},
+// companySize: { type: Number, required: true }
