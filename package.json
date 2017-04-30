@@ -6,12 +6,10 @@
   "author": "Ismael Bakkali Chairi",
   "license": "ISC",
   "dependencies": {
-    "bcrypt": "^1.0.2",
     "body-parser": "^1.17.1",
     "cors": "^2.8.3",
     "express": "^4.15.2",
     "method-override": "^2.3.8",
-    "mongoose": "^4.9.5",
     "request-ip": "^2.0.1",
     "validator": "^7.0.0"
   },

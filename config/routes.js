@@ -11,7 +11,9 @@ router.route('/sign_up')
 
 //Client Info
 router.route('/accounting_platforms')
-  .get(clients.getClientInfo)
+  .get((req, res) => {
+    return res.status(200).json([{accountingProvidder: "Xero"}, {"accountingProvider": "Crunch" }, {"accountingProvider": "Free Agent" }]);
+  });
 
 
 module.exports = router;
