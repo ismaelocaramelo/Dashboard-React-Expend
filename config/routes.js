@@ -12,7 +12,7 @@ router.route('/sign_up')
 //Client Info
 router.route('/accounting_platforms')
   .get((req, res) => {
-    return res.status(200).json([{accountingProvidder: "Xero"}, {"accountingProvider": "Crunch" }, {"accountingProvider": "Free Agent" }]);
+    return res.status(200).json([{accountingProvider: "Xero"}, {"accountingProvider": "Crunch" }, {"accountingProvider": "Free Agent" }]);
   });
 
 

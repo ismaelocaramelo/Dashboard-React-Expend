@@ -2,7 +2,6 @@ module.exports = {
   signUp: clientsCreate
 };
 
-const Client = require('../models/client');
 const  fs    = require('fs');
 
 function clientsCreate(req, res){
@@ -12,7 +11,7 @@ function clientsCreate(req, res){
       }
 
       console.log("The file was saved!");
-  }); 
+  });
 }
 
 
