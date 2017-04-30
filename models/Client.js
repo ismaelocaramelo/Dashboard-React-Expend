@@ -9,26 +9,9 @@ const ClientSchema = new mongoose.Schema({
   companySize: { type: Number, required: true }
 });
 
-// ClientSchema
-//   .virtual('clientIp')
-//   .set(setClientIp);
-
 ClientSchema
   .path('email')
   .validate(validateEmail);
-
-
-// function setClientIp(ip){
-//   this._ip   = value;
-//   this.ipHash = bcrypt.hashSync(value, bcrypt.genSaltSync(8));
-// }
-//
-// function validateClientIp(clientIp){
-//   return bcrypt.compareSync(clientIp, this.ipHash);
-// }
-//
-// ClientSchema.methods.validateClientIp = validateClientIp;
-
 
 function validateEmail(email) {
   if (!validator.isEmail(email)) {

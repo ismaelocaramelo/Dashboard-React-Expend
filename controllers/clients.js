@@ -17,11 +17,10 @@ function clientsGetInfo(req, res){
 function clientsCreate(req, res){
   Client.create(req.body.client, (err, client) => {
     if (err) return res.status(500).json(err);
-    user['clientIp'] = // Somehow needs to be stored
+    user['clientIp'] = req.clientIp;
     user.save((err, user) => {
       if (err) return res.status(status).json({success: false});
       return res.status(201).json({success: true, message: `Welcome ${client.name}!`, user});
     });
-  });
   });
 }
