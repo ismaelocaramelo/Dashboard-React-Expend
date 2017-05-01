@@ -1,19 +1,15 @@
 import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
-import {observable} from "mobx"
-import {observer} from "mobx-react"
+
 import axios from 'axios'
 
 import Input from './inputs_form';
-
-
 
 class FormContainer extends Component{
 
   constructor(props) {
     super(props);
 
-    observable(this.accountingProvider);
     this.accountingProviderItems = [];
     this.state = {
 			name: '',
@@ -28,6 +24,7 @@ class FormContainer extends Component{
           this.accountingProviderItems = res.data.map(obj => {
             return `${obj.accountingProvider}`
           });
+          this.setState({accountingProvider: this.accountingProviderItems[0]})
       });
 
     this.handleFormSubmit = this.handleFormSubmit.bind(this);
@@ -82,6 +79,7 @@ class FormContainer extends Component{
   render(){
     return (
         <form className="container" onSubmit={this.handleFormSubmit}>
+
           <Input
             label="Name"
             type="text"

@@ -24,12 +24,9 @@ app.use(methodOverride((req) => {
     return method;
   }
 }));
-// app.use(requestIp.mw())
-//
-// app.use(function(req, res) {
-//     const ip = req.clientIp;
-//     //res.end(ip);
-// });
+
+app.use(requestIp.mw())
+
 
 app.use('/', router);
 
