@@ -1,15 +1,21 @@
 import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
 
-const Input = ({label, type, placeholder}) => {
+const Input = (props) => (
 
-  return(
-    <div className="form-group">
-      <label htmlFor="exampleInputEmail1">{label}</label>
-      <input type={type} className="form-control" aria-describedby="emailHelp" placeholder={placeholder} />
-    </div>
-  );
-};
+  <div className="form-group">
+    <label
+      htmlFor="exampleInputEmail1">{props.label}
+    </label>
+    <input
+      type={props.type}
+      className="form-control" aria-describedby="emailHelp"
+      placeholder={props.placeholder}
+      value={props.content}
+      onChange={props.controlFunc}
+       />
+  </div>
+)
 
 
 export default Input;

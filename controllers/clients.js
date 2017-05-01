@@ -5,12 +5,10 @@ module.exports = {
 const  fs    = require('fs');
 
 function clientsCreate(req, res){
-  fs.writeFile("signup.csv", "Hey there!", function(err) {
-      if(err) {
-          return console.log(err);
-      }
-
-      console.log("The file was saved!");
+  console.log(req.formData);
+  fs.appendFile("signup.csv", "<req>", function(err) {
+      if(err) {return console.log(err);}
+      return res.status(200).json({calma: "Cr7"});
   });
 }
 
