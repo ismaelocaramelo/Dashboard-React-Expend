@@ -1,8 +1,5 @@
 import React, {Component} from 'react';
-import ReactDOM from 'react-dom';
-
 import axios from 'axios'
-
 import Input from './inputs_form';
 
 class FormContainer extends Component{
@@ -34,11 +31,6 @@ class FormContainer extends Component{
 		this.handleCompanySize = this.handleCompanySize.bind(this);
   }
 
-  fireOnSelect() {
-    if (typeof this.handleAccountinProviderChange === "function")
-      this.accountinProviderChange(this.state.accountingProvider) /* solved! */
-  }
-
   handleNameChange(e) {
   	this.setState({ name: e.target.value });
   }
@@ -50,7 +42,6 @@ class FormContainer extends Component{
   }
   handleAccountinProviderChange(e) {
     this.setState({ accountingProvider: e.target.value });
-    this.fireOnSelect();
   }
   handleCompanySize(e) {
   	this.setState({ companySize: e.target.value });
@@ -59,7 +50,6 @@ class FormContainer extends Component{
 
   handleFormSubmit(e) {
 		e.preventDefault();
-    console.log(this.state.accountingProvider);
 
     if (this.state.accountingProvider !== 'emptyOption') {
       const formData = {
@@ -86,7 +76,9 @@ class FormContainer extends Component{
         <form className="container" onSubmit={this.handleFormSubmit}>
           <div id="input_group_override" className="form-group col-sm-12">
             <Input
-              regex="[a-zA-Z0-9]{3,96}[ ]?[a-zA-Z0-9]{3,100}"
+              regex="[\w0-9]+(?:\s?[\w0-9]+)?"
+              minLength = "3"
+              maxLength = "100"
               key="nameid"
               type="text"
               placeholder="Name"
@@ -118,7 +110,7 @@ class FormContainer extends Component{
               controlFunc={this.handleCompanySize}
               />
           </div>
-          <button type="submit" className="btn btn-primary">Submit</button>
+          <button type="submit" className="btn btn-outline-info center-block text-uppercase">Sign me up!</button>
         </form>
       </div>
     )

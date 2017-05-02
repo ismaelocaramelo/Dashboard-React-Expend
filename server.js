@@ -27,7 +27,6 @@ app.use(methodOverride((req) => {
 
 app.use(requestIp.mw())
 
-
 app.use('/', router);
 
 app.listen(config.port, () => console.log(`Started on port: ${config.port}`));

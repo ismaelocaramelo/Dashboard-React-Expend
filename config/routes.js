@@ -9,7 +9,7 @@ router.route('/')
 router.route('/sign_up')
   .post(clients.signUp)
 
-//Client Info
+//Client Accounting Info
 router.route('/accounting_platforms')
   .get((req, res) => {
     return res.status(200).json([{accountingProvider: "Xero"}, {"accountingProvider": "Crunch" }, {"accountingProvider": "Free Agent" }]);

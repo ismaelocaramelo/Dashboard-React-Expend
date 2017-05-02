@@ -2,14 +2,14 @@ import React, {Component} from 'react';
 
 
 const HeaderDashboard = () => {
-  //Ajustar container
+
   return(
     <div>
       <div className="row first-container">
-        <div className="col-md-2"></div>
-        <div className="col-md-7">
+        <div className="col-md-3"></div>
+        <div className="col-md-6 text-center">
           <h1>Introducing Expend</h1>
-          <h2>Expenses captured automatically</h2>
+          <h3>Expenses captured automatically</h3>
         </div>
         <div className="col-md-3"></div>
       </div>
