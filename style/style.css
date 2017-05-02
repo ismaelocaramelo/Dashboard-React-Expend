@@ -2,11 +2,79 @@ body {
   font-family: 'Quicksand', sans-serif;
 }
 
+#index{
+  color: #4f586e;
+}
+
+
+
+/*.first-container {
+  font-size: 14px;
+}
+
+@include media-breakpoint-up(sm) {
+  .first-container {
+    font-size: 16px;
+  }
+}
+
+@include media-breakpoint-up(md) {
+  .first-container {
+    font-size: 20px;
+  }
+}
+
+@include media-breakpoint-up(lg) {
+  .first-container {
+    font-size: 28px;
+  }
+}*/
+
 .img-dashboar{
   width: 261px;
 }
 
 .secon-container{
-  background-color: #1554d5;
+  background-color: #012b45;
   width: 100%;
+}
+
+.form-container{
+  padding: 10px;
+  width: 80%;
+}
+
+.content{
+  width: 100%;
+}
+
+
+.input_override{
+  border: 0px;
+  border-radius: 0px;
+
+  width: 70%;
+  display: inline-block;
+  position: relative;
+}
+
+#label_override{
+  width: 30%;
+  display: inline-block;
+  padding-left: 10px;
+
+}
+
+#div_override{
+  border: 0px;
+  border-radius: 0px;
+  border-bottom: 1px solid #ccc;
+}
+
+#input_group_override{
+  border: 1px solid #ccc;
+  display: block;
+  border-radius: .25rem;
+  padding-left: 0px;
+  padding-right: 0px;
 }

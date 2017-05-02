@@ -24,7 +24,7 @@ class FormContainer extends Component{
           this.accountingProviderItems = res.data.map(obj => {
             return `${obj.accountingProvider}`
           });
-          this.setState({accountingProvider: this.accountingProviderItems[0]})
+          this.setState({accountingProvider: 'emptyOption'})
       });
 
     this.handleFormSubmit = this.handleFormSubmit.bind(this);
@@ -59,63 +59,71 @@ class FormContainer extends Component{
 
   handleFormSubmit(e) {
 		e.preventDefault();
+    console.log(this.state.accountingProvider);
 
-		const formData = {
-			name: this.state.name,
-			email: this.state.email,
-			accountingProvider: this.state.accountingProvider,
-			companySize: this.state.companySize
-		};
+    if (this.state.accountingProvider !== 'emptyOption') {
+      const formData = {
+  			name: this.state.name,
+  			email: this.state.email,
+  			accountingProvider: this.state.accountingProvider,
+  			companySize: this.state.companySize
+  		};
 
-    console.log(formData);
+      axios
+        .post('http://localhost:3000/sign_up', {formData})
+        .then(res => {
+          console.log(res, 'res');
+        });
+    }else{
+      alert('Please select an Accounting Provider');
+    }
 
-    axios
-      .post('http://localhost:3000/sign_up', {formData})
-      .then(res => {
-        console.log(res, 'res');
-      });
   }
 
   render(){
     return (
+      <div className="form-container center-block form-horizontal">
         <form className="container" onSubmit={this.handleFormSubmit}>
-
-          <Input
-            label="Name"
-            type="text"
-            placeholder="Enter name"
-            content={this.state.name}
-            controlFunc={this.handleNameChange}
-            />
-          <Input
-            label="Email"
-            type="email"
-            placeholder="Enter email"
-            content={this.state.email}
-            controlFunc={this.handleEmailChange}
-            />
-          <Input
-            label="Company Size"
-            type="number"
-            placeholder="Enter company size"
-            content={this.state.companySize}
-            controlFunc={this.handleCompanySize}
-            />
-          <div className="form-group">
-            <label htmlFor="exampleSelect1">Account Platform</label>
-            <select
-              className="form-control"
-              id="exampleSelect1"
-              onChange={(e) => this.accountinProviderChange(e.target.value)}>
-              {this.accountingProviderItems.map(option =>
-                <option key={option.toUpperCase()}>{option}</option>
-              )}
-            </select>
+          <div id="input_group_override" className="form-group col-sm-12">
+            <Input
+              regex="[a-zA-Z0-9]{3,96}[ ]?[a-zA-Z0-9]{3,100}"
+              key="nameid"
+              type="text"
+              placeholder="Name"
+              content={this.state.name}
+              controlFunc={this.handleNameChange}
+              />
+            <Input
+              key="emailid"
+              type="email"
+              placeholder="Email"
+              content={this.state.email}
+              controlFunc={this.handleEmailChange}
+              />
+            <div id="div_override">
+              <label id="label_override">Accounting Platform used:</label>
+              <select
+                onChange={(e) => this.accountinProviderChange(e.target.value)}>
+                <option key="emptyOption">Select one</option>
+                {this.accountingProviderItems.map(option =>
+                  <option key={option.toUpperCase()}>{option}</option>
+                )}
+              </select>
+            </div>
+            <Input
+              key="companySizeid"
+              type="number"
+              placeholder="Company Size"
+              content={this.state.companySize}
+              controlFunc={this.handleCompanySize}
+              />
           </div>
           <button type="submit" className="btn btn-primary">Submit</button>
         </form>
+      </div>
     )
   }
 }
+
 
 export default FormContainer;
